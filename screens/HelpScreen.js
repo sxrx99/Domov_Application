@@ -10,7 +10,7 @@ export default function HelpScreen() {
 
       <View style={tw `flex m-auto  `}>
     
-     <View style={tw ` flex w-340px h-53px border rounded-15px justify-center`}>
+     <View style={tw `pl-2 flex w-340px h-53px border rounded-15px justify-center`}>
       <Text>
        Visit our web site
       </Text>
