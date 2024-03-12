@@ -5,6 +5,7 @@ import { colors } from '../theme/constants';
 import DeviceCard from './DeviceCard';
 
 
+
 export default function Flat() {
   const dataList = [
     { name: 'Light 1' , key: 1 },

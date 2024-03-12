@@ -5,7 +5,7 @@ import { loadFonts } from '../theme/constants';
 
 
 
-export default function Device({ switchValue , name , Children}) {
+export default function Device({ switchValue , name ,Children}) {
     
     const fontsLoaded = loadFonts();
   

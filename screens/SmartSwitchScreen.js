@@ -11,6 +11,7 @@ export default function SmartSwitchScreen() {
     <View style={tw `mx-5 flex flex-col `}>
       <Text>ya rebi temchi hh </Text>
       <Flat/>
+      {/* comment */}
     </View>
     </ScreenWrapper>
   )
