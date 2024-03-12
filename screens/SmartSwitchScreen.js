@@ -9,7 +9,7 @@ export default function SmartSwitchScreen() {
   return (
     <ScreenWrapper>
     <View style={tw `mx-5 flex flex-col `}>
-      <Text>Smart </Text>
+      <Text>i am so smart hahahahahahahahah </Text>
       <Flat/>
     </View>
     </ScreenWrapper>
