@@ -9,8 +9,8 @@ import { colors } from '../theme/constants';
 
 export default function Flat() {
   const dataList = [
-    // { name: 'Garage door', devices: 1, key: 1 },
-    // { name: 'Garage lights', devices: 4, key: 2 }
+    { name: 'Garage door', devices: 1, key: 1 },
+    { name: 'Garage lights', devices: 4, key: 2 }
   ];
   return (
     <View > 
@@ -21,7 +21,7 @@ export default function Flat() {
       <FlatList
         data={dataList}
         renderItem={({ item }) => (
-          <ToggleCard name={item.name} devices={item.devices} />
+          <ToggleCard name={item.name} devices={item.devices}  />
         )}
         numColumns={2}
         ListEmptyComponent={() => (

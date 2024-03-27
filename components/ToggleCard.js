@@ -17,7 +17,7 @@ const ToggleCard = ({ name, devices }) => {
 
   return (
     <Togglecontainer switchValue={switchValue} toggleSwitch={toggleSwitch} name={name} devices={devices}>
-        <ToggleSwitch switchValue={switchValue} toggleSwitch={toggleSwitch}/>
+        <ToggleSwitch switchValue={switchValue} toggleSwitch={toggleSwitch} connected={true}/>
     </Togglecontainer>
     
   );

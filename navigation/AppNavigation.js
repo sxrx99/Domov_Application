@@ -55,7 +55,7 @@ export default function AppNavigation() {
           tabBarLabelStyle: { color: colors.navigation},
         }}
       />
-<Tab.Screen
+{/* <Tab.Screen
         name="Add device"
         component={AddDeviceScreen}
         options={{ 
@@ -77,7 +77,7 @@ export default function AppNavigation() {
           },
           tabBarLabelStyle: { color: colors.navigation},
         }}
-      />
+      /> */}
 
      <Tab.Screen
         name="Smart switch"
