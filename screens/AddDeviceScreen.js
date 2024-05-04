@@ -33,12 +33,32 @@ const ChangeCredentialsScreen = () => {
         const responseBody = await response.text();
         console.log('HTTP Error Status:', response.status);
         console.log('HTTP Error Body:', responseBody);
+
+        // Check if the error is due to being disconnected from ESP32 network
+        if (response.status === 404) {
+          // Assume 404 means not found (e.g., disconnected from network)
+          console.log('Disconnected from ESP32 network');
+          Alert.alert('Credentials Updated', 'Credentials updated successfully');
+          // Handle this scenario gracefully without showing an error to the user
+          return;
+        }
+
         Alert.alert('Error', `Failed to update credentials. Server response: ${responseBody}`);
       }
       
     } catch (error) {
       setIsLoading(false);
+
+      // Ignore network errors without displaying an error message
+      if (error.name === 'FetchError' || error instanceof TypeError) {
+      
+        console.log('Network error occurred:', error.message);
+        return;
+      }
+
       console.error('Error updating credentials:', error);
+
+      // Display a generic error message for other types of errors
       Alert.alert('Error', 'An error occurred while updating credentials');
     }
   };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import tw from 'twrnc';
-import ToggleSwitch from './ToggleSwitch';
+import ToggleForDevicefrom from './ToggleForDevice';
 import { loadFonts } from '../theme/constants';
 import { colors } from '../theme/constants';
 import Togglecontainer from './Togglecontainer';
@@ -17,7 +17,7 @@ const ToggleCard = ({ name, devices }) => {
 
   return (
     <Togglecontainer switchValue={switchValue} toggleSwitch={toggleSwitch} name={name} devices={devices}>
-        <ToggleSwitch switchValue={switchValue} toggleSwitch={toggleSwitch} connected={true}/>
+        <ToggleForDevicefrom switchValue={switchValue} toggleSwitch={toggleSwitch} connected={true}/>
     </Togglecontainer>
     
   );

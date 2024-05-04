@@ -3,7 +3,7 @@ import { Switch, View, Text } from 'react-native';
 import tw from 'twrnc';
 import { colors } from '../theme/constants';
 
-const ToggleSwitch = ({ switchValue, toggleSwitch , connected}) => {
+const ToggleForDevice = ({ switchValue, toggleSwitch , connected}) => {
   // const [switchValue, setSwitchValue] = useState(false);
 
   // const toggleSwitch = (value) => {
@@ -21,10 +21,10 @@ const ToggleSwitch = ({ switchValue, toggleSwitch , connected}) => {
         onValueChange={toggleSwitch}
         value={switchValue}
         style={{ transform: [{ scaleX: 1.2 }, { scaleY: 1.2}] }}
-        disabled={true}
+       
       />
     </View>
   );
 };
 
-export default ToggleSwitch;
+export default ToggleForDevice ;

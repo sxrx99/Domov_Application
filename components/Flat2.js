@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import React, { useState , useEffect} from 'react';
+import { View, Text, FlatList ,Platform, Linking} from 'react-native';
 import tw from 'twrnc';
 import { colors } from '../theme/constants';
 import DeviceCard from './DeviceCard';
@@ -7,23 +7,47 @@ import { TouchableOpacity } from 'react-native';
 import ConnectModal from './Modal';
 import Modal2 from './Modal2';
 
+import NetInfo from '@react-native-community/netinfo';
+
+
 
 export default function Flat() {
   const [data, setData] = useState([
-    { name: 'Device 1', key: 1, connected: false },
+    { name: 'Domov', key: 1, connected: false },
     // { name: 'Device 2', key: 2, connected: false },
     // { name: 'Device 3', key: 3, connected: false },
     // { name: 'Device 4', key: 4, connected: false },
   ]);
+
+  //modals 
   const [modalVisible, setModalVisible] = useState(false);
   const [modalConnected,setModalConnnected] = useState(false);
 
   const [modalVisible2, setModalVisible2] = useState(false);
-
+  
+  //spliting the connected and none connected devices
   const connectedDevices = data.filter(device => device.connected === true);
   const availableDevices = data.filter(device => device.connected === false);
 
+
   const [switchValue , setSwitchValue] = useState(false);
+
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      const isConnected = state.isConnected;
+      const updatedData = data.map(item => {
+        if (item.name === 'Domov') {
+          return { ...item, connected: isConnected };
+        }
+        return item;
+      });
+      setData(updatedData);
+      setSwitchValue(isConnected);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const toggleDevice = (deviceId) => {
     // Delayed toggle
@@ -40,9 +64,17 @@ export default function Flat() {
 
   const handleItemPress = (deviceId, connected) => {
     if (!connected) {
-      setModalVisible(true);
+      openWifiSettings();
+      // setModalVisible(true);
+
       toggleDevice(deviceId);
       
+    }
+  };
+
+  const handleItemPress2 = (deviceId, connected) => {
+    if (connected) {
+      openWifiSettings(); 
     }
   };
 
@@ -62,6 +94,20 @@ export default function Flat() {
     setModalVisible2(false);
   };
 
+   //wifi alert function
+  const openWifiSettings = async () => {
+    try {
+      if (Platform.OS === 'android') {
+        // Provide instructions to open settings manually
+        alert('To manage Wi-Fi settings, go to Settings > Network & Internet > Wi-Fi');
+      } else if (Platform.OS === 'ios') {
+        await Linking.openURL('App-Prefs:root=WIFI');
+      }
+    } catch (error) {
+      console.error('Error opening Wi-Fi settings:', error);
+    }
+  };
+
 
   return (
     <View>
@@ -72,11 +118,12 @@ export default function Flat() {
           <FlatList
             data={connectedDevices}
             renderItem={({ item }) => (
-              <TouchableOpacity onLongPress={() => handleItemLongPress(item.key, item.connected)}>
+              <TouchableOpacity onPress={() => handleItemPress2(item.key, item.connected)}>
               <DeviceCard
               name={item.name}
               connect={item.connected}
               sendVariableToFlat={receiveVariableFromDeviceCard}
+              switchValue={switchValue}
               />
               </TouchableOpacity>
             )}
@@ -95,7 +142,8 @@ export default function Flat() {
               <DeviceCard
                name={item.name}
                connect={item.connected}
-              
+               sendVariableToFlat={receiveVariableFromDeviceCard}
+               switchValue={switchValue}
               />
                 
               </TouchableOpacity>
