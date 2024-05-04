@@ -11,6 +11,8 @@ import HomeIcon from '../assets/svgs/homeIcon';
 import Smartswitch from '../assets/svgs/smartswitch';
 import Help from '../assets/svgs/help';
 import AddDevice from '../assets/svgs/addDevice';
+
+import LaunchScreen from '../screens/LaunchScreen';
 const Tab = createBottomTabNavigator();
 const screenOptions = {
   headerShown:false ,
@@ -37,7 +39,7 @@ export default function AppNavigation() {
 
          <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={ /*LaunchScreen*/HomeScreen}
         options={{ 
           
           tabBarIcon: ({focused}) => {

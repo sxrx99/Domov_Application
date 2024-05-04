@@ -5,6 +5,8 @@ import { colors } from '../theme/constants';
 import DeviceCard from './DeviceCard';
 import { TouchableOpacity } from 'react-native';
 import ConnectModal from './Modal';
+import Modal2 from './Modal2';
+
 
 export default function Flat() {
   const [data, setData] = useState([
@@ -16,8 +18,12 @@ export default function Flat() {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalConnected,setModalConnnected] = useState(false);
 
+  const [modalVisible2, setModalVisible2] = useState(false);
+
   const connectedDevices = data.filter(device => device.connected === true);
   const availableDevices = data.filter(device => device.connected === false);
+
+  const [switchValue , setSwitchValue] = useState(false);
 
   const toggleDevice = (deviceId) => {
     // Delayed toggle
@@ -40,6 +46,23 @@ export default function Flat() {
     }
   };
 
+  const receiveVariableFromDeviceCard = (variable) => {
+    setSwitchValue(variable);
+  }
+
+  const handleItemLongPress = (deviceId, connected) => {
+    if (connected && switchValue ) {
+      setModalVisible2(true);
+    }
+  };
+
+  
+  // Function to handle closing of the second modal
+  const handleCloseModal2 = () => {
+    setModalVisible2(false);
+  };
+
+
   return (
     <View>
 
@@ -49,7 +72,13 @@ export default function Flat() {
           <FlatList
             data={connectedDevices}
             renderItem={({ item }) => (
-              <DeviceCard name={item.name} connect={item.connected} />
+              <TouchableOpacity onLongPress={() => handleItemLongPress(item.key, item.connected)}>
+              <DeviceCard
+              name={item.name}
+              connect={item.connected}
+              sendVariableToFlat={receiveVariableFromDeviceCard}
+              />
+              </TouchableOpacity>
             )}
             numColumns={1}
             
@@ -63,7 +92,11 @@ export default function Flat() {
             data={availableDevices}
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => handleItemPress(item.key, item.connected)}>
-                <DeviceCard name={item.name} connect={item.connected}  />
+              <DeviceCard
+               name={item.name}
+               connect={item.connected}
+              
+              />
                 
               </TouchableOpacity>
             )}
@@ -78,6 +111,8 @@ export default function Flat() {
           <Text style={[tw` text-18px mt-10 `, { fontFamily: 'Inter-Regular', color: colors.maingrey }]}> no device available ...</Text>
         </View>
       )}
+       
+      <Modal2 isVisible={modalVisible2} onClose={handleCloseModal2} />
 
       <ConnectModal isVisible={modalVisible} isConnected={modalConnected}/>
 
