@@ -2,16 +2,12 @@ import { View, Text ,TouchableOpacity} from 'react-native'
 import Box from '../assets/svgs/Box'
 import tw from 'twrnc';
 import { colors } from '../theme/constants';
-import { loadFonts } from '../theme/constants.js';
+import { useCustomFonts } from '../theme/constants.js';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 export default function EmptyList({handleClick}) {
-    const fontsLoaded = loadFonts();
-
-    if (!fontsLoaded) {
-     return undefined;
-    }
+ 
     const navigation = useNavigation();
     const navigateToAddDeviceScreen = () => {
       navigation.navigate('SmartSwitchScreen');

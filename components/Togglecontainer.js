@@ -1,7 +1,7 @@
 import React from 'react';
 import tw from 'twrnc';
 import { Text, View } from 'react-native';
-import { loadFonts } from '../theme/constants';
+import { loadFonts} from '../theme/constants';
 import { colors } from '../theme/constants';
 
 
@@ -10,11 +10,11 @@ const Togglecontainer = ({ switchValue, toggleSwitch, children ,name, devices })
    
   
   
-    const fontsLoaded = loadFonts();
+  const fontsLoaded = loadFonts();
   
-    if (!fontsLoaded) {
-     return undefined;
-    }
+  if (!fontsLoaded) {
+   return undefined;
+  }
     
     
   

@@ -8,11 +8,11 @@ import { loadFonts } from '../theme/constants';
 
 export default function Device({ switchValue , name ,children}) {
     
-    const fontsLoaded = loadFonts();
+  const fontsLoaded = loadFonts();
   
-    if (!fontsLoaded) {
-     return undefined;
-    }
+  if (!fontsLoaded) {
+   return undefined;
+  }
  
   return (
     <View style={[tw` flex flex-row justify-between items-center`,{ backgroundColor: switchValue ? colors.maingreen : '#fff',   height: 65,
