@@ -16,7 +16,7 @@ import Logo from '../assets/svgs/logo';
 export default function HelpScreen() {
 
   const handleVisit = async () => {
-    const url = 'https://www.facebook.com'; //TO CHANGGEEEEEEEEEEE
+    const url = 'https://domov-website.vercel.app/'; 
     const supported = await Linking.canOpenURL(url);
     if (supported) {
       await Linking.openURL(url);
@@ -53,3 +53,6 @@ export default function HelpScreen() {
     </ScreenWrapper>
   )
 }
+
+
+

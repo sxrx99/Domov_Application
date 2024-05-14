@@ -19,14 +19,41 @@ export default function HomeScreen() {
     navigation.navigate('AddDeviceScreen');
   };
 
-  const [networkInfo, setNetworkInfo] = useState(null);
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
-      setNetworkInfo(state);
-    });
-    return unsubscribe;
-  }, []);
+  //check the wifi 
 
+  const [isConnected, setIsConnected] = useState(false);
+
+  // Fetch current SSID
+  const getCurrentSSID = async () => {
+    try {
+      const state = await NetInfo.fetch();
+      const currentSsid = state.details.ssid;
+      if (currentSsid) {
+        if (currentSsid === 'Domov') {
+          setIsConnected(true);
+        } else {
+          setIsConnected(false);
+        }
+      } else {
+        console.log("SSID is undefined, make sure permissions are granted and WiFi is connected");
+        setIsConnected(false);
+      }
+    } catch (error) {
+      console.error("Error fetching SSID: ", error);
+      setIsConnected(false);
+    }
+  };
+
+  useEffect(() => {
+   
+        getCurrentSSID(); // Initial fetch
+        const intervalId = setInterval(getCurrentSSID, 5000); // Fetch every 5 seconds
+        return () => clearInterval(intervalId); // Cleanup interval on unmount
+      }
+
+  , []);
+
+  
   const [LightState, setLightState] = useState(false);
   const [GarageDoorState, setGarageDoorState] = useState(false);
 
@@ -52,6 +79,8 @@ export default function HomeScreen() {
     };
 
     fetchLedStates();
+    const intervalId = setInterval(fetchLedStates, 1000); 
+    return () => clearInterval(intervalId); 
   }, []);
 
   const handleControlLed = async (device, action) => {
@@ -85,7 +114,7 @@ export default function HomeScreen() {
           {dataList.length > 0 && (
             <Text style={[tw`ml-7 mr-55 text-18px mb-5 border-b pb-1`, { fontFamily: 'Inter-Regular', color: colors.maingrey, borderBottomColor: colors.maingrey }]}>All scenes</Text>
           )}
-          {networkInfo?.isConnected ? (
+          {isConnected ? (
             <View style={tw`flex flex-row justify-between`}>
               <View style={[tw`w-[180px]  mr-1 h-164px border-0 p-3 flex-col justify-between rounded-7 `, { backgroundColor: LightState ? colors.maingreen : '#fff' }]}>
                 <View>

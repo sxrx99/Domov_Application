@@ -15,6 +15,8 @@ import { Switch } from 'react-native';
 export default function Flat() {
   const [networkInfo, setNetworkInfo] = useState(null);
 
+  
+
   // wifi check 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
