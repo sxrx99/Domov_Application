@@ -10,7 +10,7 @@ import Modal2 from './Modal2';
 import NetInfo from '@react-native-community/netinfo';
 import { useNavigation } from '@react-navigation/native';
 
-
+//this component gives the list of the smart switches that exist in the area
 export default function Flat() {
   const [data, setData] = useState([
     { name: 'Domov', key: 1, connected: false },

@@ -10,6 +10,8 @@ import EmptyList from '../components/EmptyList';
 import axios from 'axios';
 import NetInfo from '@react-native-community/netinfo';
 
+
+//Home screen
 export default function HomeScreen() {
   const navigation = useNavigation();
  
@@ -100,7 +102,7 @@ export default function HomeScreen() {
     <ScreenWrapper style={[tw`flex-1`, { width: WIDTH }]}>
       <View style={tw`mx-5 flex flex-col `}>
         <View style={[tw`flex-row justify-between items-center mt-5`]}>
-          <Text style={{ fontFamily: 'Inter-SemiBold', fontSize: 50 }}>Home</Text>
+          <Text style={{ fontFamily: 'Inter-SemiBold', fontSize: 40 }}>Home</Text>
           <TouchableOpacity
             style={tw` flex justify-center items-center relative bg-black w-40px h-40px  bg-gray-100 rounded-full`}
             onPress={navigateToAddDeviceScreen}

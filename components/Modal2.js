@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Modal, ActivityIndicator , TouchableOpacity} from 'react-native';
 import tw from 'twrnc';
 import { colors } from '../theme/constants';
+
+//this component represents a modal that shows up when the smart switch is being connected 
+
 export default function Modal2({ isVisible }) {
   const [modalVisible, setModalVisible] = useState(isVisible);
 

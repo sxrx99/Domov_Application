@@ -12,7 +12,7 @@ import Logo from '../assets/svgs/logo';
 
 
 
-
+//Help screen
 export default function HelpScreen() {
 
   const handleVisit = async () => {

@@ -1,8 +1,8 @@
 import {useFonts} from 'expo-font'
 
 export const colors = {
-    navigation : '#727B7A' , //hadi tae hadok li mlta7t f bottom tab
-    mainbg :'#D9D9D9',  //hadi l bg tae klch gae l'app basically
+    navigation : '#727B7A' , 
+    mainbg :'#D9D9D9', 
     maingreen : '#58E3B0',
     maingrey : '#84908F',
     grdgreen: '#4AC296',
@@ -10,7 +10,7 @@ export const colors = {
     lightgrey: '#3C3C43',
     greybtn:' #606766',
     extralightgrey : '#EBEBF5'
-    //##C9CED7  didn't find where it's used 
+    
 
 }
 
@@ -34,5 +34,5 @@ export const loadFonts = () => {
 };
 
 
-
+//the endpoint of the weather api 
 export const apiKey = 'cece9adfa8ee480b832130219240703';

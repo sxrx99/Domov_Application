@@ -14,6 +14,8 @@ import AddDevice from '../assets/svgs/addDevice';
 import {View,Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 
+
+//this component permits the navigation between the screens 
 const Tab = createBottomTabNavigator();
 const screenOptions = {
   headerShown: false,

@@ -5,6 +5,8 @@ import tw from 'twrnc';
 import { colors } from '../theme/constants';
 import Logo from '../assets/svgs/logo';
 
+
+//Change credentials screen 
 const ChangeCredentialsScreen = () => {
   const [newSsid, setNewSsid] = useState('');
   const [newPassword, setNewPassword] = useState('');

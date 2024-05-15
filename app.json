@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "Domov",
+    "slug": "Domov",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
@@ -9,6 +9,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "icon": "./assets/svgs/logoo.svg",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -18,13 +19,17 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.banxban.Domov"
     },
-    "web": {
-      
-    },
+    "web": {},
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "f475a80b-1e16-4d2d-af46-1df163815677"
+      }
+    }
   }
 }

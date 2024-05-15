@@ -8,7 +8,7 @@ import Logo from '../assets/svgs/logo';
 import { colors } from '../theme/constants';
 import ConnectModal from '../components/Modal'
 
-
+//Smart switch screen 
 export default function SmartSwitchScreen() {
   
 

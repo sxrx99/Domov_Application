@@ -8,7 +8,7 @@ import axios from 'axios';
 import NetInfo from '@react-native-community/netinfo';
 
 
-// changes 
+// this component changes depending on the list of scenes that the smart switch offers 
 import { loadFonts } from '../theme/constants';
 import { Switch } from 'react-native';
 
